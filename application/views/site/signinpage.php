@@ -26,6 +26,7 @@
 		<link href="<?=base_url('assets/vendor/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/vendor/semantic/semantic.min.css')?>">
 		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/toastr.min.css')?>">
+		<style>.toast-message p{color:white;}</style>
 	</head> 
 
 <body>

@@ -4,8 +4,63 @@
 		public function __construct(){
             parent::__construct();
             $this->load->model('Blog_model', 'blog');
+            $this->load->model('App_model', 'app');
         }
+        public function addblogcategory(){
+		    $this->load->view('site_temp/header');
+		    $this->load->view('blogs/addblogcategory');
+		    $this->load->view('site_temp/footer');
+		}
+		public function addnewcat(){
+			$this->form_validation->set_rules('category_name', 'Name', 'required|max_length[150]');
+			if($this->form_validation->run() === FALSE){
+                $err = $this->form_validation->error_array();
+                // header change to json
+                header('Content-Type: application/json');
+                echo json_encode(array('errarray'=>'true','status'=>'error','data'=>$err));
+			}else{
+                $data = $this->input->post();
+				if($this->blog->addnewcat($data)){
+                    // header change to json
+                    header('Content-Type: application/json');
+                    echo json_encode(array('errarray'=>'false','status'=>'ok','data'=>"New Category Added!"));
+				}else{
+                    // header change to json
+                    header('Content-Type: application/json');
+                    echo json_encode(array('errarray'=>'false','status'=>'error','data'=>"Something went wrong!"));
+				}
+			}
+        }
+        public function catlistjson(){
+			$filterdata = array(
+				"column_order" => array('id','category_name',null),
+				"column_search" => array('category_name'),
+				"order" => array('id' => 'desc')
+			);
+			$this->blog->getblogcat();
+			$list = $this->app->datatableapi($this->input->post(),$filterdata);
 
+			$data = array();
+			$no = $this->input->post('start');
+			foreach ($list['data'] as $rowdata) {
+				$no++;
+				$row = array();
+				$row[] = $no.".";
+				$row[] = $rowdata->category_name;
+				$row[] = "edit btn";
+				$data[] = $row;
+            }
+            
+			$output = array(
+				"draw" => empty($this->input->post('draw')) ? 'none' : $this->input->post('draw'),
+				"recordsTotal" => $this->blog->countblogcat(),
+				"recordsFiltered" => $list['numrows'],
+				"data" => $data
+			);
+			// header change to json
+			header('Content-Type: application/json');
+			echo json_encode($output);
+		}
 		public function addnew_blog(){
             $this->form_validation->set_rules('subcat_id', 'Category/Subtegory', 'required');
 			$this->form_validation->set_rules('blog_title', 'Title', 'required|max_length[150]');

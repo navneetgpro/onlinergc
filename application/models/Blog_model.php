@@ -3,11 +3,22 @@
 
 		public function __construct(){
 			$this->load->database();
+        }
+        public function getblogcat(){
+			$this->db->select('*');
+			$this->db->from('blog_cat');
+		}
+		public function countblogcat(){
+			$this->getblogcat();
+			return $this->db->count_all_results();
 		}
 		public function addnew_blog($data){
             #print_r($data);
             #exit();
             return $this->db->insert('blogs',$data);
+        }
+		public function addnewcat($data){
+            return $this->db->insert('blog_cat',$data);
         }
         public function listblogs($limit=false,$offset=false){
             $this->db->select('*');

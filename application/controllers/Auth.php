@@ -52,7 +52,7 @@
 				);
 			$this->session->unset_userdata($newdata);
 			$this->session->sess_destroy();
-			redirect('p/signin','refresh');
+			redirect('d/signin','refresh');
 		}
 
 	

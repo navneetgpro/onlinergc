@@ -29,6 +29,8 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/vendor/semantic/semantic.min.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/toastr.min.css')?>">
 	<script src="<?=base_url('assets/js/jquery-3.3.1.min.js')?>"></script>
+	<link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<style>.toast-message p{color:white;}</style>
 </head>
 
 <body>
@@ -190,7 +192,7 @@
 						</a>
 					</li>
 					<li class="menu--item">
-						<a href="<?=base_url('p/certificates')?>"class="menu--link<?=ractive($s,"certificates")?>" title="My Certificates">
+						<a href="<?=base_url('d/certificates')?>"class="menu--link<?=ractive($s,"certificates")?>" title="My Certificates">
 							<i class='uil uil-award menu--icon'></i>
 							<span class="menu--label">My Certificates</span>
 						</a>
