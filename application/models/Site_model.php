@@ -5,10 +5,10 @@
 			$this->load->database();
 		}
 		public function loginMe($username,$password){
-            $this->db->select('id,password,utype');
+            $this->db->select('id,password,user_type');
 			$this->db->from('users');
 			$this->db->where('username',$username);
-			$this->db->where('isactive',1);
+			$this->db->where('acc_status','active');
 			$query = $this->db->get();
             $user = $query->result();
 

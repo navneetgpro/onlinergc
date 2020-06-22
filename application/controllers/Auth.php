@@ -1,5 +1,5 @@
 <?php
-	class Site extends CI_Controller{
+	class Auth extends CI_Controller{
 	    
 		public function __construct()
 		{
@@ -7,32 +7,9 @@
 			$this->load->model('Site_model', 'dbcon');
 			$this->load->model('Common_model','common');
 		}
-		public function first(){
-			$this->common->is_login();
-			$head['title'] = "Add User";
-		    $this->load->view('site_temp/site_header',$head);
-			$this->load->view('site/advender');
-		    $this->load->view('site_temp/site_footer');
-		}
-		public function users(){
-			$this->common->is_login();
-			$head['title'] = "User List";
-			$data['users'] = $this->dbcon->listuser();
-		    $this->load->view('site_temp/site_header',$head);
-			$this->load->view('site/users',$data);
-		    $this->load->view('site_temp/site_footer');
-		}
-		public function userslist($id=NULL){
-			$this->common->is_login();
-			$head['title'] = "User List";
-			$data['users'] = $this->dbcon->underuser($id);
-		    $this->load->view('site_temp/site_header',$head);
-			$this->load->view('site/userslist',$data);
-		    $this->load->view('site_temp/site_footer');
-		}
 		public function login(){
 			//defult variables defied
-			$er=0; $outmsg='';
+			$er=0; $outmsg=null;
 			$baseu = base_url();
 			$this->form_validation->set_rules('username', 'Username', 'required');
 			$this->form_validation->set_rules('password', 'Password', 'required');
@@ -51,7 +28,7 @@
 				}else{
 					$sesnvar = array(
 						"logged_in" => true,
-						"utype" => $result[0]->utype,
+						"utype" => $result[0]->user_type,
 						"userid" => $result[0]->id
 					);
 					// user data in session
@@ -62,8 +39,10 @@
 			}
 
 			//message post
-			$type = ($er==1) ? "success" : "danger";
-			echo json_encode(array('msgtype'=>$type,'datacon'=>$outmsg));
+			$type = ($er==1) ? "ok" : "error";
+			// header change to json
+			header('Content-Type: application/json');
+			echo json_encode(array('status'=>$type,'data'=>$outmsg));
 		}
         public function logout(){
 			$newdata = array(
@@ -73,7 +52,7 @@
 				);
 			$this->session->unset_userdata($newdata);
 			$this->session->sess_destroy();
-			redirect('site/signin','refresh');
+			redirect('p/signin','refresh');
 		}
 
 	
@@ -111,44 +90,7 @@
             }
             return $randomString;
         }
-		// pages
-		public function addvendor(){
-		    $this->common->is_login();
-			$head['title'] = "Add Vender";
-		    $this->load->view('site_temp/site_header',$head);
-			$this->load->view('site/advender');
-		    $this->load->view('site_temp/site_footer');
-		}
-		public function addcustomer(){
-		    $this->common->is_login();
-			$head['title'] = "Add Customer";
-			$data['lastref'] = $this->dbcon->lastrefid();
-			$d= $this->generateid();
-			$data['bookid'] = $d['nxtid'];
-		    $this->load->view('site_temp/site_header',$head);
-			$this->load->view('site/adcust',$data);
-		    $this->load->view('site_temp/site_footer');
-		}
-		public function viewvendor(){
-		    $this->common->is_login();
-			$head['title'] = "View Vender";
-			$data['venders'] = $this->dbcon->venders();
-		    $this->load->view('site_temp/site_header',$head);
-			$this->load->view('site/viewvend',$data);
-		    $this->load->view('site_temp/site_footer');
-		}
-		public function viewcustomer(){
-		    $this->common->is_login();
-			$head['title'] = "View Customer";
-			$data['customers'] = $this->dbcon->customers();
-		    $this->load->view('site_temp/site_header',$head);
-			$this->load->view('site/viewcust',$data);
-		    $this->load->view('site_temp/site_footer');
-		}
 		
-		public function signin(){
-			$this->load->view('site/signin');
-		}
 
 		// Check if phone exists
 		public function check_phone_exists($phone){

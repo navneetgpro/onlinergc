@@ -12,6 +12,7 @@ const baseurl = 'http://localhost/onlinergc';
 // Submit form
 $(document).on("click", ".ajaxform", function () {
     var tget = this;
+    var btext = $(tget).text();
     $(tget).prop('disabled', true);
     var omsgb = $(tget).attr('data-msg');
     var aftreloadb = $(tget).attr('data-aftreload');
@@ -31,12 +32,18 @@ $(document).on("click", ".ajaxform", function () {
         processData: false,
         contentType: false,
         beforeSend: function () {
+            $(tget).text('processing...');
+            return;
             $('#' + omsg).html('<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>').show();
             $('.error').html('');
         },
         success: function (data) {
-            $(tget).prop('disabled', false);
+            $(tget).text(btext);
             var data = eval(data);
+            const tt = data.status === "ok" ? "success" : "error";
+            toastr[tt](data.data);
+            $(tget).prop('disabled', false);
+            return false;
             var outmsg = data.msg;
             if (data.multi === "true") {
                 $('#' + omsg).html('');
@@ -56,6 +63,7 @@ $(document).on("click", ".ajaxform", function () {
             }
         },
         error: function (jqXHR, exception) {
+            $(tget).text(btext);
             $(tget).prop('disabled', false);
             $('#' + omsg).html('');
             if (jqXHR.status === 0) {

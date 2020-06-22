@@ -47,7 +47,7 @@
 	<script src="<?=base_url('assets/js/night-mode.js')?>"></script>
 	<script src="<?=base_url('assets/js/toastr.min.js')?>"></script>
 	<script>
-		toastr.options = { "closeButton": true, "timeOut": 200000,"progressBar": true,"preventDuplicates": true, "showEasing": "swing" }
+		toastr.options = { "closeButton": true, "progressBar": true,"preventDuplicates": true, "showEasing": "swing" }
 	</script>
 </body>
 </html>

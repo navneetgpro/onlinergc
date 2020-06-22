@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, shrink-to-fit=9">
-	<meta name="description" content="Gambolthemes">
-	<meta name="author" content="Gambolthemes">
-	<title>Cursus - My Certificates</title>
+	<meta name="description" content="Study Online Course">
+	<meta name="author" content="OnlineRGC">
+	<title>OnlineRGC</title>
 
 	<!-- Favicon Icon -->
 	<link rel="icon" type="image/png" href="<?=base_url('assets/images/fav.png')?>">
@@ -161,7 +161,7 @@
 						<a href="setting.html" class="item channel_item">Setting</a>
 						<a href="help.html" class="item channel_item">Help</a>
 						<a href="feedback.html" class="item channel_item">Send Feedback</a>
-						<a href="<?=base_url('p/signin')?>" class="item channel_item">Sign Out</a>
+						<a href="<?=base_url('auth/logout')?>" class="item channel_item">Sign Out</a>
 					</div>
 				</li>
 			</ul>
@@ -252,3 +252,4 @@
 		</div>
 	</nav>
 	<!-- Left Sidebar End -->
+	
