@@ -6,6 +6,18 @@
             $this->load->model('Blog_model', 'blog');
             $this->load->model('App_model', 'app');
         }
+        public function categoryjson(){
+            $categories = $this->blog->categories();
+            // header change to json
+            header('Content-Type: application/json');
+            echo json_encode(['categories'=>$categories]);
+        }
+        public function subcategoryjson(){
+            $subcategories = $this->blog->subcategories();
+            // header change to json
+            header('Content-Type: application/json');
+            echo json_encode(['subcategories'=>$subcategories]);
+        }
         public function addblogcategory(){
             $data['categories'] = $this->blog->categories();
 		    $this->load->view('site_temp/header');
