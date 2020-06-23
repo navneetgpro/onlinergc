@@ -29,7 +29,6 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/vendor/semantic/semantic.min.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/toastr.min.css')?>">
 	<script src="<?=base_url('assets/js/jquery-3.3.1.min.js')?>"></script>
-	<link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 	<style>.toast-message p{color:white;}</style>
 </head>
 
