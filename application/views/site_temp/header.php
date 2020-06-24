@@ -176,7 +176,7 @@
 	function ractive($u,$p){ echo $u==$p ? ' active' : ''; }
 	function ractivemutli($s,$pages){
 		if (in_array($s, $pages)){
-			echo ' active';
+			echo ' menu--subitens__opened';
 		}else{ echo ''; }
 	} ?>
 	<!-- Left Sidebar Start -->
@@ -189,6 +189,23 @@
 							<i class="uil uil-apps menu--icon"></i>
 							<span class="menu--label">Dashboard</span>
 						</a>
+					</li>
+					<li class="menu--item  menu--item__has_sub_menu <?=ractivemutli($s,['newblog','addblogsubcategory','addblogcategory'])?>">
+						<label class="menu--link" title="Tests">
+						  <i class='uil uil-clipboard-alt menu--icon'></i>
+						  <span class="menu--label">Blog Master</span>
+						</label>
+						<ul class="sub_menu">
+							<li class="sub_menu--item">
+								<a href="<?=base_url('blog/newblog')?>" class="sub_menu--link">Add Blog</a>
+							</li>
+							<li class="sub_menu--item">
+								<a href="<?=base_url('blog/addblogsubcategory')?>" class="sub_menu--link">Subcategory</a>
+							</li>
+							<li class="sub_menu--item">
+								<a href="<?=base_url('blog/addblogcategory')?>" class="sub_menu--link">Category</a>
+							</li>
+						</ul>
 					</li>
 					<li class="menu--item">
 						<a href="<?=base_url('d/certificates')?>"class="menu--link<?=ractive($s,"certificates")?>" title="My Certificates">

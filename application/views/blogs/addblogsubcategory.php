@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="st_title"><i class="uil uil-award"></i> Subcategory</h2>
+                <h2 class="st_title"><i class="uil uil-clipboard-alt"></i> Subcategory</h2>
             </div>
         </div>
         <div class="card">
@@ -19,10 +19,12 @@
                                 <option value="<?=$category['id']?>"><?=$category['category_name']?></option>
                                 <?php } ?>
                             </select>
+                            <label id="cat_id-error" class="error"></label>
                         </div>
                         <div class="group-form">
                             <label>Name*</label>
                             <input class="_dlor1" type="text" name="subcat_name" maxlength="150" placeholder="Enter Subcategory Name" required>
+                            <label id="subcat_name-error" class="error"></label>
                         </div>
                         <button class="_145d1 ajaxform" data-control="blog/addnewsubcat" data-form="formid">Submit</button>
                     </form>
@@ -45,7 +47,7 @@
                                     <td class="cell-ta"><?=$subcategory['category_name']?></td>
                                     <td class="cell-ta"><?=$subcategory['subcat_name']?></td>
                                     <td class="text-center">
-                                        <a href="../../html-imgs/certificate.jpg"  target="_blank">View</a>
+                                        <a href="#"  target="_blank">View</a>
                                         <a href="#" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
                                     </td>
                                 </tr>

@@ -7,7 +7,7 @@
 					<div class="col-md-6">
 						<ul class="fotb_left">
 							<li>
-								<a href="index.html">
+								<a href="#">
 									<div class="footer_logo">
 										<img src="<?=base_url('assets/images/logo1.svg')?>" alt="">
 									</div>

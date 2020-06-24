@@ -31,8 +31,9 @@
             return $this->db->insert('blog_subcat',$data);
         }
         public function listblogs($limit=false,$offset=false){
-            $this->db->select('*');
-            $this->db->from('blogs');
+            $this->db->select('b.*,s.subcat_name');
+            $this->db->from('blogs as b');
+            $this->db->from('blog_subcat as s','s.id=b.subcat_id');
             if($limit){ $this->db->limit($limit,$offset); }
             $this->db->order_by('id','desc');
             $query = $this->db->get();
