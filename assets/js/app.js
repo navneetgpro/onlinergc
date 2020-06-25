@@ -12,6 +12,7 @@ const baseurl = window.location.origin;
 // Submit form
 $(document).on("click", ".ajaxform", function () {
     var tget = this;
+    var btext = $(tget).text();
     $(tget).prop('disabled', true);
     var omsgb = $(tget).attr('data-msg');
     var aftreloadb = $(tget).attr('data-aftreload');
@@ -31,33 +32,33 @@ $(document).on("click", ".ajaxform", function () {
         processData: false,
         contentType: false,
         beforeSend: function () {
-            $('#' + omsg).html('<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>').show();
+            $(tget).text('processing...');
             $('.error').html('');
+            return;
         },
         success: function (data) {
-            $(tget).prop('disabled', false);
+            $(tget).text(btext);
             var data = eval(data);
-            var outmsg = data.msg;
-            if (data.multi === "true") {
+            const tt = data.status === "ok" ? "success" : "error";
+            $(tget).prop('disabled', false);
+
+            var outmsg = data.data;
+            if (data.errarray === "true") {
                 $('#' + omsg).html('');
                 $.each(outmsg, function (i, errmsg) {
                     $(`#${i}-error`).html(errmsg);
                 });
             } else {
-                var msgty = data.err === "false" ? "success" : "danger";
-                var pelmnt = $('#' + omsg).html("<div class='alert alert-" + msgty + "' role='alert'> " + outmsg + " </div>");
-                if (data.err === "false") {
+                toastr[tt](data.data);
+                if (data.status === "ok") {
                     if (isformreset === "false") { $("#" + formidg)[0].reset(); }
                     if (aftreload === "true") { location.reload(); }
-                    pelmnt.show().delay(5000).fadeOut();
-                } else {
-                    pelmnt.show().delay(8000).fadeOut();
                 }
             }
         },
         error: function (jqXHR, exception) {
+            $(tget).text(btext);
             $(tget).prop('disabled', false);
-            $('#' + omsg).html('');
             if (jqXHR.status === 0) {
                 alert('Not connect.\n Verify Network.');
             } else if (jqXHR.status == 404) {

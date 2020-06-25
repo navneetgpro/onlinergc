@@ -1,5 +1,5 @@
 <?php
-	class P extends CI_Controller{
+	class D extends CI_Controller{
 	    
 		public function __construct()
 		{
@@ -9,7 +9,7 @@
 		    $this->load->view('site_temp/header');
 		    $this->load->view('site/indexpage');
 		    $this->load->view('site_temp/footer');
-		}
+        }
 		public function certificates(){
 		    $this->load->view('site_temp/header');
 		    $this->load->view('site/certificates');

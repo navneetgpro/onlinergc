@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, shrink-to-fit=9">
-	<meta name="description" content="Gambolthemes">
-	<meta name="author" content="Gambolthemes">
-	<title>Cursus - My Certificates</title>
+	<meta name="description" content="Study Online Course">
+	<meta name="author" content="OnlineRGC">
+	<title>OnlineRGC</title>
 
 	<!-- Favicon Icon -->
 	<link rel="icon" type="image/png" href="<?=base_url('assets/images/fav.png')?>">
@@ -29,6 +29,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/vendor/semantic/semantic.min.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/toastr.min.css')?>">
 	<script src="<?=base_url('assets/js/jquery-3.3.1.min.js')?>"></script>
+	<style>.toast-message p{color:white;}</style>
 </head>
 
 <body>
@@ -161,7 +162,7 @@
 						<a href="setting.html" class="item channel_item">Setting</a>
 						<a href="help.html" class="item channel_item">Help</a>
 						<a href="feedback.html" class="item channel_item">Send Feedback</a>
-						<a href="<?=base_url('p/signin')?>" class="item channel_item">Sign Out</a>
+						<a href="<?=base_url('auth/logout')?>" class="item channel_item">Sign Out</a>
 					</div>
 				</li>
 			</ul>
@@ -175,7 +176,7 @@
 	function ractive($u,$p){ echo $u==$p ? ' active' : ''; }
 	function ractivemutli($s,$pages){
 		if (in_array($s, $pages)){
-			echo ' active';
+			echo ' menu--subitens__opened';
 		}else{ echo ''; }
 	} ?>
 	<!-- Left Sidebar Start -->
@@ -189,8 +190,25 @@
 							<span class="menu--label">Dashboard</span>
 						</a>
 					</li>
+					<li class="menu--item  menu--item__has_sub_menu <?=ractivemutli($s,['newblog','addblogsubcategory','addblogcategory'])?>">
+						<label class="menu--link" title="Tests">
+						  <i class='uil uil-clipboard-alt menu--icon'></i>
+						  <span class="menu--label">Blog Master</span>
+						</label>
+						<ul class="sub_menu">
+							<li class="sub_menu--item">
+								<a href="<?=base_url('blog/newblog')?>" class="sub_menu--link">Add Blog</a>
+							</li>
+							<li class="sub_menu--item">
+								<a href="<?=base_url('blog/addblogsubcategory')?>" class="sub_menu--link">Subcategory</a>
+							</li>
+							<li class="sub_menu--item">
+								<a href="<?=base_url('blog/addblogcategory')?>" class="sub_menu--link">Category</a>
+							</li>
+						</ul>
+					</li>
 					<li class="menu--item">
-						<a href="<?=base_url('p/certificates')?>"class="menu--link<?=ractive($s,"certificates")?>" title="My Certificates">
+						<a href="<?=base_url('d/certificates')?>"class="menu--link<?=ractive($s,"certificates")?>" title="My Certificates">
 							<i class='uil uil-award menu--icon'></i>
 							<span class="menu--label">My Certificates</span>
 						</a>
@@ -252,3 +270,4 @@
 		</div>
 	</nav>
 	<!-- Left Sidebar End -->
+	

@@ -4,8 +4,8 @@
 		<meta charset="utf-8">		
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
-		<meta name="description" content="Gambolthemes">
-		<meta name="author" content="Gambolthemes">
+		<meta name="description" content="online classes">
+		<meta name="author" content="onlinergc">
 		<title>Online RGC</title>
 		
 		<!-- Favicon Icon -->
@@ -24,8 +24,9 @@
 		<link href="<?=base_url('assets/vendor/OwlCarousel/assets/owl.carousel.css')?>" rel="stylesheet">
 		<link href="<?=base_url('assets/vendor/OwlCarousel/assets/owl.theme.default.min.css')?>" rel="stylesheet">
 		<link href="<?=base_url('assets/vendor/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="<?=base_url('assets/vendor/semantic/semantic.min.css')?>">
-		
+		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/vendor/semantic/semantic.min.css')?>">
+		<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/toastr.min.css')?>">
+		<style>.toast-message p{color:white;}</style>
 	</head> 
 
 <body>
@@ -47,10 +48,10 @@
 						<button class="social_lnk_btn color_btn_fb"><i class="uil uil-facebook-f"></i>Continue with Facebook</button>
 						<button class="social_lnk_btn mt-15 color_btn_tw"><i class="uil uil-twitter"></i>Continue with Twitter</button>
 						<button class="social_lnk_btn mt-15 color_btn_go"><i class="uil uil-google"></i>Continue with Google</button>
-						<form action="<?=base_url()?>">
+						<form action="<?=base_url()?>" id="formid">
 							<div class="ui search focus mt-15">
 								<div class="ui left icon input swdh95">
-									<input class="prompt srch_explore" type="email" name="emailaddress" value="" id="id_email" required="" maxlength="64" placeholder="Email Address">															
+									<input class="prompt srch_explore" type="email" name="username" value="" id="id_email" required="" maxlength="64" placeholder="Email Address">															
 									<i class="uil uil-envelope icon icon2"></i>
 								</div>
 							</div>
@@ -68,14 +69,14 @@
 									</div>
 								</div>
 							</div>
-							<button class="login-btn" type="submit">Sign In</button>
+							<button class="ajaxform login-btn" data-control="auth/login" data-msg="out" data-form="formid" type="submit">Sign In</button>
 						</form>
 						<p class="sgntrm145">Or <a href="forgot_password.html">Forgot Password</a>.</p>
 						<p class="mb-0 mt-30 hvsng145">Don't have an account? <a href="sign_up.html">Sign Up</a></p>
 					</div>
 					<div class="sign_footer"><img src="<?=base_url('assets/images/sign_logo.png')?>" alt="">© <?=YearCopyright('2020')?> <strong>Online RGC</strong>. All Rights Reserved.</div>
 				</div>				
-			</div>				
+			</div>
 		</div>				
 	</div>
 	<!-- Signup End -->	
@@ -87,6 +88,10 @@
 	<script src="<?=base_url('assets/vendor/semantic/semantic.min.js')?>"></script>
 	<script src="<?=base_url('assets/js/custom1.js')?>"></script>
 	<script src="<?=base_url('assets/js/night-mode.js')?>"></script>
+	<script src="<?=base_url('assets/js/toastr.min.js')?>"></script>
+	<script>
+		toastr.options = { "closeButton": true, "progressBar": true, "showEasing": "swing" }
+	</script>
 	
 </body>
 </html>
