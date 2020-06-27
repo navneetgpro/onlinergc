@@ -1,7 +1,11 @@
 .DS_Store
 
 application/cache/*
+<<<<<<< HEAD
 assets/js/*
+=======
+assets/js/app.js
+>>>>>>> development
 !application/cache/index.html
 !application/cache/.htaccess
 

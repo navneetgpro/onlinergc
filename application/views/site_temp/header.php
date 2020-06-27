@@ -191,7 +191,7 @@
 						</a>
 					</li>
 					<li class="menu--item  menu--item__has_sub_menu <?=ractivemutli($s,['newblog','addblogsubcategory','addblogcategory'])?>">
-						<label class="menu--link" title="Tests">
+						<label class="menu--link" title="Blog Master">
 						  <i class='uil uil-clipboard-alt menu--icon'></i>
 						  <span class="menu--label">Blog Master</span>
 						</label>
@@ -208,10 +208,30 @@
 						</ul>
 					</li>
 					<li class="menu--item">
-						<a href="<?=base_url('d/certificates')?>"class="menu--link<?=ractive($s,"certificates")?>" title="My Certificates">
-							<i class='uil uil-award menu--icon'></i>
-							<span class="menu--label">My Certificates</span>
+						<a href="<?=base_url('c/listcourse')?>"class="menu--link<?=ractive($s,"listcourse")?>" title="Add new Course">
+							<i class='uil uil-video menu--icon'></i>
+							<span class="menu--label">Course</span>
 						</a>
+					</li>
+					<li class="menu--item">
+						<a href="<?=base_url('t/listtechers')?>"class="menu--link<?=ractivemutli($s,["listtechers","addnewtecher"])?>" title="Teachers">
+							<i class='uil uil-award menu--icon'></i>
+							<span class="menu--label">Teachers</span>
+						</a>
+					</li>
+					<li class="menu--item  menu--item__has_sub_menu <?=ractivemutli($s,['newblog','addsubcategory','addcategory'])?>">
+						<label class="menu--link" title="Course Master">
+						  <i class='uil uil-book-alt menu--icon'></i>
+						  <span class="menu--label">Course Master</span>
+						</label>
+						<ul class="sub_menu">
+							<li class="sub_menu--item">
+								<a href="<?=base_url('c/addsubcategory')?>" class="sub_menu--link">Subcategory</a>
+							</li>
+							<li class="sub_menu--item">
+								<a href="<?=base_url('c/addcategory')?>" class="sub_menu--link">Category</a>
+							</li>
+						</ul>
 					</li>
 					<li class="menu--item">
 						<a href="student_courses.html" class="menu--link" title="Courses">
