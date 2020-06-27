@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="st_title"><i class="uil uil-clipboard-alt"></i> Subcategory</h2>
+                <h2 class="st_title"><i class="uil uil-book-alt"></i> Subcategory</h2>
             </div>
         </div>
         <div class="card">
@@ -17,17 +17,22 @@
                             <label>Category*</label>
                             <select class="_dlor1" name="cat_id" >
                                 <?php foreach ($categories as $category) { ?>
-                                <option value="<?=$category['id']?>"><?=$category['category_name']?></option>
+                                <option value="<?=$category['id']?>"><?=$category['title']?></option>
                                 <?php } ?>
                             </select>
                             <label id="cat_id-error" class="error"></label>
                         </div>
                         <div class="group-form">
                             <label>Name*</label>
-                            <input class="_dlor1" type="text" name="subcat_name" maxlength="150" placeholder="Enter Subcategory Name" required>
-                            <label id="subcat_name-error" class="error"></label>
+                            <input class="_dlor1" type="text" name="title" maxlength="150" placeholder="Enter Subcategory Name" required>
+                            <label id="title-error" class="error"></label>
                         </div>
-                        <button class="_145d1 ajaxform" data-control="blog/addnewsubcat" data-form="formid">Submit</button>
+                        <div class="group-form">
+                            <label>Icon Image</label>
+                            <input class="_dlor1" type="file" name="icon_img" >
+                            <label id="icon_img-error" style="margin-bottom:0px;" class="error"></label>
+                        </div>
+                        <button class="_145d1 ajaxform" data-control="c/addnewsubcat" data-form="formid">Submit</button>
                     </form>
                 </div>
                 <div class="col-md-6">
@@ -45,8 +50,8 @@
                                 <?php $sn=0; foreach ($subcategories as $subcategory) { $sn++; ?>
                                 <tr>
                                     <td class="text-center"><?=$sn?>.</td>
-                                    <td class="cell-ta"><?=$subcategory['category_name']?></td>
-                                    <td class="cell-ta"><?=$subcategory['subcat_name']?></td>
+                                    <td class="cell-ta"><?=$subcategory['category']?></td>
+                                    <td class="cell-ta"><?=$subcategory['subcategory']?></td>
                                     <td class="text-center">
                                         <a href="#"  target="_blank">View</a>
                                         <a href="#" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>

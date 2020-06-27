@@ -1,3 +1,4 @@
+<style>label{display: block;}.error{color: #ed2a26 !important;}</style>
 <!-- Body Start -->
 <div class="wrapper">
 <div class="sa4d25">
@@ -40,7 +41,11 @@
                                         <a href="#" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
                                     </td>
                                 </tr>
-                                <?php } ?>
+                                <?php } if(count($categories)==0){
+                                    echo "<tr>
+                                        <td colspan=6><center>No records found</center></td>
+                                    </tr>";
+                                } ?>
                             </tbody>
                         </table>
                     </div>
