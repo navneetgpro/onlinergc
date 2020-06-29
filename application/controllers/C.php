@@ -42,7 +42,11 @@
 		}
 
 		public function addnew_course(){
-			$this->form_validation->set_rules('course_title', 'Title', 'required|max_length[150]');
+			$this->form_validation->set_rules('subcat_id', 'Subcategory', 'required');
+			$this->form_validation->set_rules('course_title', 'Title', 'required|max_length[100]');
+			$this->form_validation->set_rules('sale_price', 'Sale Price', 'required');
+			$this->form_validation->set_rules('actual_price', 'Actual Price', 'required');
+			$this->form_validation->set_rules('demo_video', 'Demo video', 'required');
 			if($this->form_validation->run() === FALSE){
                 $err = $this->form_validation->error_array();
                 // header change to json
