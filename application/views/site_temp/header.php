@@ -208,15 +208,9 @@
 						</ul>
 					</li>
 					<li class="menu--item">
-						<a href="<?=base_url('c/listcourse')?>"class="menu--link<?=ractive($s,"listcourse")?>" title="Add new Course">
+						<a href="<?=base_url('c/listcourse')?>"class="menu--link<?=ractivemutli($s,["listcourse","addcourse"])?>" title="Add new Course">
 							<i class='uil uil-video menu--icon'></i>
 							<span class="menu--label">Course</span>
-						</a>
-					</li>
-					<li class="menu--item">
-						<a href="<?=base_url('t/listtechers')?>"class="menu--link<?=ractivemutli($s,["listtechers","addnewtecher"])?>" title="Teachers">
-							<i class='uil uil-award menu--icon'></i>
-							<span class="menu--label">Teachers</span>
 						</a>
 					</li>
 					<li class="menu--item  menu--item__has_sub_menu <?=ractivemutli($s,['newblog','addsubcategory','addcategory'])?>">
@@ -232,6 +226,12 @@
 								<a href="<?=base_url('c/addcategory')?>" class="sub_menu--link">Category</a>
 							</li>
 						</ul>
+					</li>
+					<li class="menu--item">
+						<a href="<?=base_url('t/listtechers')?>"class="menu--link<?=ractivemutli($s,["listtechers","addnewtecher"])?>" title="Teachers">
+							<i class='uil uil-award menu--icon'></i>
+							<span class="menu--label">Teachers</span>
+						</a>
 					</li>
 					<li class="menu--item">
 						<a href="student_courses.html" class="menu--link" title="Courses">
