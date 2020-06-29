@@ -4,6 +4,19 @@
 		public function __construct(){
 			$this->load->database();
         }
+        public function addnew_video($data){
+            return $this->db->insert('course_videos',$data);
+        }
+        public function addnew_course($data){
+            return $this->db->insert('course_details',$data);
+        }
+        public function courses(){
+            $this->db->select('*');
+            $this->db->from('course_details');
+            $this->db->order_by('id','desc');
+            $query = $this->db->get();
+            return $query->result_array();
+        }
         public function categories(){
             $this->db->select('*');
             $this->db->from('course_cat');
