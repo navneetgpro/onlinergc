@@ -11,34 +11,34 @@
         }
 		public function addvideo($id){
 			$data['id'] = $id;
-		    $this->load->view('site_temp/header');
+		    $this->load->view('dash_temp/header');
 		    $this->load->view('course/addvideo',$data);
-		    $this->load->view('site_temp/footer');
+		    $this->load->view('dash_temp/footer');
 		}
 		public function addcourse(){
 			$data['subcategories'] = $this->course->subcategories();
-		    $this->load->view('site_temp/header');
+		    $this->load->view('dash_temp/header');
 		    $this->load->view('course/addcourse',$data);
-		    $this->load->view('site_temp/footer');
+		    $this->load->view('dash_temp/footer');
 		}
 		public function listcourse(){
 			$data['courses'] = $this->course->courses();
-		    $this->load->view('site_temp/header');
+		    $this->load->view('dash_temp/header');
 		    $this->load->view('course/listcourse',$data);
-		    $this->load->view('site_temp/footer');
+		    $this->load->view('dash_temp/footer');
 		}
 		public function addcategory(){
             $data['categories'] = $this->course->categories();
-		    $this->load->view('site_temp/header');
+		    $this->load->view('dash_temp/header');
 		    $this->load->view('course/addcategory',$data);
-		    $this->load->view('site_temp/footer');
+		    $this->load->view('dash_temp/footer');
 		}
         public function addsubcategory(){
             $data['categories'] = $this->course->categories();
             $data['subcategories'] = $this->course->subcategories();
-		    $this->load->view('site_temp/header');
+		    $this->load->view('dash_temp/header');
 		    $this->load->view('course/addsubcategory',$data);
-		    $this->load->view('site_temp/footer');
+		    $this->load->view('dash_temp/footer');
 		}
 
 		public function addnew_course(){

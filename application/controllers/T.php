@@ -10,15 +10,15 @@
 		    die('access denied');
         }
         public function addnewtecher(){
-		    $this->load->view('site_temp/header');
+		    $this->load->view('dash_temp/header');
 		    $this->load->view('teacher/addnewtecher');
-		    $this->load->view('site_temp/footer');
+		    $this->load->view('dash_temp/footer');
 		}
 		public function listtechers(){
             $data['teachers'] = $this->tech->teachersarr();
-		    $this->load->view('site_temp/header');
+		    $this->load->view('dash_temp/header');
 		    $this->load->view('teacher/listtechers',$data);
-		    $this->load->view('site_temp/footer');
+		    $this->load->view('dash_temp/footer');
         }
         public function addnew_teacher(){
             $this->form_validation->set_rules('full_name', 'Name', 'required|max_length[100]');
