@@ -20,16 +20,16 @@
         }
         public function addblogcategory(){
             $data['categories'] = $this->blog->categories();
-		    $this->load->view('site_temp/header');
+		    $this->load->view('dash_temp/header');
 		    $this->load->view('blogs/addblogcategory',$data);
-		    $this->load->view('site_temp/footer');
+		    $this->load->view('dash_temp/footer');
 		}
         public function addblogsubcategory(){
             $data['categories'] = $this->blog->categories();
             $data['subcategories'] = $this->blog->subcategories();
-		    $this->load->view('site_temp/header');
+		    $this->load->view('dash_temp/header');
 		    $this->load->view('blogs/addblogsubcategory',$data);
-		    $this->load->view('site_temp/footer');
+		    $this->load->view('dash_temp/footer');
 		}
 		public function addnewcat(){
 			$this->form_validation->set_rules('category_name', 'Name', 'required|max_length[150]');
@@ -76,9 +76,9 @@
             $data['categories'] = $this->blog->categories();
             $data['subcategories'] = $this->blog->subcategories();
             $data['listblogs'] = $this->blog->listblogs();
-		    $this->load->view('site_temp/header');
+		    $this->load->view('dash_temp/header');
 		    $this->load->view('blogs/newblog',$data);
-		    $this->load->view('site_temp/footer');
+		    $this->load->view('dash_temp/footer');
 		}
 		public function addnew_blog(){
             $this->form_validation->set_rules('subcat_id', 'Category/Subtegory', 'required');
@@ -138,9 +138,9 @@
 			header('Content-Type: application/json');
 			echo json_encode(array('status'=>'ok','data'=>$data['listblogs']));
             }else{
-                $this->load->view('site_temp/header');
+                $this->load->view('dash_temp/header');
                 $this->load->view('blogs/bloglist',$data);
-                $this->load->view('site_temp/footer');
+                $this->load->view('dash_temp/footer');
             }
         }
 
