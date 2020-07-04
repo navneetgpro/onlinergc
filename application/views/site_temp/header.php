@@ -68,23 +68,7 @@
                                 <a class="social" href="#"><i class="fa fa-linkedin"></i></a>
                             </li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-lock"></i> Login & Register</a>
-                                <div class="dropdown-menu">
-                                    <form method="post"> 
-                                        <div class="form-title">
-                                            <h4>Login Area</h4>
-                                            <hr>
-                                        </div>
-                                        <input class="form-control" type="text" name="username" placeholder="User Name"> 
-                                        <div class="formpassword">
-                                            <input class="form-control" type="password" name="password" placeholder="******"> 
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <button type="submit" class="btn btn-block btn-primary">Login</button>
-                                        <hr>
-                                        <h4><a href="#">Create an Account</a></h4>
-                                    </form> 
-                                </div>
+                                <a href="<?=base_url('d/signin')?>" ><i class="fa fa-lock"></i> Login & Register</a>
                             </li>
                         </ul>
 					</div><!-- end right -->
@@ -111,45 +95,14 @@
                                 <span class="fa fa-bars"></span>
                             </button>
                             <div class="logo">
-                                <a class="navbar-brand" href="index-2.html"><img src="images/logo.png" alt=""></a>
+                                <a class="navbar-brand" href="index-2.html"><img src="<?=base_url('assets/f/images/logo.png')?>" alt=""></a>
                             </div>
                         </div><!-- end navbar-header -->
             
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                <li class="dropdown ttmenu-half"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Home <b class="fa fa-angle-down"></b></a>
-                                    <ul class="dropdown-menu menu-bg wbg">
-                                        <li>
-                                        <div class="ttmenu-content">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="box">
-                                                        <ul>
-                                                            <li><a href="index1.html">Home Version 1</a></li>
-                                                            <li><a href="index2.html">Home Version 2</a></li>
-                                                            <li><a href="index3.html">Home Version 3</a></li>
-                                                            <li><a href="index4.html">Home Version 4</a></li>
-                                                            <li><a href="index5.html">Home Version 5</a></li>
-                                                            <li><a href="index6.html">Home Version 6</a></li>
-                                                            <li><a href="index7.html">Home Version 7</a></li>
-                                                        </ul>
-                                                    </div><!-- end box -->
-                                                </div><!-- end col -->
-                                                <div class="col-md-6">
-                                                    <div class="box">
-                                                        <ul>
-                                                            <li><a href="index8.html">Home Version 8</a></li>
-                                                            <li><a href="index9.html">Home Version 9</a></li>
-                                                            <li><a href="index10.html">Home Version 10</a></li>
-                                                        </ul>
-                                                    </div><!-- end box -->
-                                                </div><!-- end col -->
-                                            </div><!-- end row -->
-                                        </div><!-- end ttmenu-content -->
-                                        </li>
-                                    </ul>
-                                </li><!-- end mega menu -->
-                                <li><a href="page-about.html">About</a></li>
+                                <li><a class="<?=ractive($curl,$baseu)?>" href="<?=base_url()?>">Home</a></li>
+                                <li><a class="<?=ractivemutli($s,['about'])?>" href="<?=base_url('p/about')?>">About</a></li>
                                 <li class="dropdown ttmenu-half"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Courses <b class="fa fa-angle-down"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
@@ -236,11 +189,11 @@
                                     </ul>
                                 </li><!-- end mega menu -->
                                 <li><a href="forums.html">Community</a></li>
-                                <li><a href="blog.html">Blog</a></li>
+                                <li><a class="<?=ractivemutli($s,['blogs'])?>" href="<?=base_url('p/blogs')?>">Blog</a></li>
                                 <li><a class="<?=ractivemutli($s,['contact'])?>" href="<?=base_url('p/contact')?>">Contact</a></li>
                             </ul><!-- end nav navbar-nav -->
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a class="btn btn-primary" href="course-login.html"><i class="fa fa-sign-in"></i> Register Now</a></li>
+                                <li><a class="btn btn-primary" href="<?=base_url('d/signup')?>"><i class="fa fa-sign-in"></i> Register Now</a></li>
                             </ul>
                         </div><!--/.nav-collapse -->
                     </div><!-- end navbar navbar-default clearfix -->
