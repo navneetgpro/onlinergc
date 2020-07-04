@@ -30,7 +30,7 @@
 	</head> 
 
 <body>
-	<!-- Signup Start -->
+	<!-- Signin Start -->
 	<div class="sign_in_up_bg">
 		<div class="container">
 			<div class="row justify-content-lg-center justify-content-md-center">
@@ -48,7 +48,7 @@
 						<button class="social_lnk_btn color_btn_fb"><i class="uil uil-facebook-f"></i>Continue with Facebook</button>
 						<button class="social_lnk_btn mt-15 color_btn_tw"><i class="uil uil-twitter"></i>Continue with Twitter</button>
 						<button class="social_lnk_btn mt-15 color_btn_go"><i class="uil uil-google"></i>Continue with Google</button>
-						<form action="<?=base_url()?>" id="formid">
+						<form id="formid">
 							<div class="ui search focus mt-15">
 								<div class="ui left icon input swdh95">
 									<input class="prompt srch_explore" type="email" name="username" value="" id="id_email" required="" maxlength="64" placeholder="Email Address">															
@@ -72,14 +72,14 @@
 							<button class="ajaxform login-btn" data-control="auth/login" data-msg="out" data-form="formid" type="submit">Sign In</button>
 						</form>
 						<p class="sgntrm145">Or <a href="forgot_password.html">Forgot Password</a>.</p>
-						<p class="mb-0 mt-30 hvsng145">Don't have an account? <a href="sign_up.html">Sign Up</a></p>
+						<p class="mb-0 mt-30 hvsng145">Don't have an account? <a href="<?=base_url('d/signup')?>">Sign Up</a></p>
 					</div>
 					<div class="sign_footer"><img src="<?=base_url('assets/images/sign_logo.png')?>" alt="">© <?=YearCopyright('2020')?> <strong>Online RGC</strong>. All Rights Reserved.</div>
 				</div>				
 			</div>
 		</div>				
 	</div>
-	<!-- Signup End -->	
+	<!-- Signin End -->	
 
     <script src="<?=base_url('assets/js/jquery-3.3.1.min.js')?>"></script>
     <script src="<?=base_url('assets/js/app.js')?>"></script>
