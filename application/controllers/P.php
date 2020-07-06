@@ -11,6 +11,23 @@
 		    $this->load->view('site/indexpage');
 		    $this->load->view('site_temp/footer');
 		}
+		public function courses(){
+			$data['coursesarr']=[];
+		    $this->load->view('site_temp/header');
+			$this->load->view('site/courses',$data);
+			$this->load->view('site_temp/footer');
+		}
+		public function course($id=null){
+			$data['course'] = [];
+		    $this->load->view('site_temp/header');
+			$this->load->view('site/course',$data);
+			$this->load->view('site_temp/footer');
+		}
+		public function faq(){
+		    $this->load->view('site_temp/header');
+			$this->load->view('site/faq');
+			$this->load->view('site_temp/footer');
+		}
 		public function certificates(){
 			$this->load->view('site_temp/header');
 			$this->load->view('site/indexpage');
