@@ -6,6 +6,55 @@
             $this->load->model('Blog_model', 'blog');
             $this->load->model('App_model', 'app');
         }
+        public function blogcomment($blogid){
+            $blogcomment = $this->blog->blogcomment($blogid);
+            $c=0; $comments = null;
+            foreach ($blogcomment as $comment) { $c++;
+                $comments .= "<div class='media'>
+                <div class='media-left'>
+                    <a href='#'>
+                        <img class='media-object img-circle' src='https://ui-avatars.com/api/?format=svg&name=$comment[pname]' alt='$comment[pname]'>
+                    </a>
+                </div>
+                <div class='media-body'>
+                        <a class='btn btn-primary btn-xs pull-right'>".date('d M Y',strtotime($comment['timestamp']))."</a>
+                    <h4 class='media-heading'>$comment[pname]</h4>
+                    
+                    <p>$comment[comment]</p>
+                </div>
+            </div>";
+            }if($c==0){
+                $comments .= "<p><center>No Comment found</center></p>";
+            }
+            echo json_encode(['count'=>$c,'comments'=>$comments]);
+        }
+        public function addcomment(){
+            $this->form_validation->set_rules('blogid', 'Something', 'required|max_length[150]');
+            $this->form_validation->set_rules('pname', 'Name', 'required|max_length[150]');
+            $this->form_validation->set_rules('pcomment', 'Comment', 'required|max_length[150]');
+			if($this->form_validation->run() === FALSE){
+                $err = validation_errors();
+                // header change to json
+                header('Content-Type: application/json');
+                echo json_encode(array('status'=>'error','data'=>$err));
+			}else{
+                $data = array(
+                    "blog_id"=>$this->input->post('blogid'),
+                    "pname"=>$this->input->post('pname'),
+                    "comment"=>$this->input->post('pcomment'),
+                    "timestamp"=>date('Y-m-d H:i:s')
+                );
+				if($this->blog->addcomment($data)){
+                    // header change to json
+                    header('Content-Type: application/json');
+                    echo json_encode(array('status'=>'ok','data'=>"Comments Added!"));
+				}else{
+                    // header change to json
+                    header('Content-Type: application/json');
+                    echo json_encode(array('status'=>'error','data'=>"Something went wrong!"));
+				}
+			}
+        }
         public function categoryjson(){
             $categories = $this->blog->categories();
             // header change to json
