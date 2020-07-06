@@ -123,12 +123,20 @@
 		}else{ return false; }
 	} ?>
 	<script src="<?=base_url('assets/f/js/jquery.min.js')?>"></script>
+    <script> const baseurl = '<?=base_url()?>'; </script>
+    <?php if(footerjs($s,['blog'])){ ?>
+	<script src="<?=base_url('assets/js/comment.js')?>"></script>
+    <?php } ?>
 	<script src="<?=base_url('assets/f/js/bootstrap.min.js')?>"></script>
 	<script src="<?=base_url('assets/f/js/retina.js')?>"></script>
     <script src="<?=base_url('assets/f/js/wow.js')?>"></script>
     <script src="<?=base_url('assets/f/js/carousel.js')?>"></script>
     <!-- CUSTOM PLUGINS -->
     <script src="<?=base_url('assets/f/js/custom.js')?>"></script>
+    <script src="<?=base_url('assets/js/toastr.min.js')?>"></script>
+	<script>
+		toastr.options = { "closeButton": true, "progressBar": true,"preventDuplicates": true, "showEasing": "swing" }
+	</script>
     <?php if(ractiveb($curl,$baseu)){ ?>
      <!-- SLIDER REV -->
      <script src="<?=base_url('assets/f/rs-plugin/js/jquery.themepunch.tools.min.js')?>"></script>

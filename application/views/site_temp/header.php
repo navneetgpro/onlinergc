@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/f/css/menu.css')?>">
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/f/css/carousel.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/f/style.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/toastr.min.css')?>">
 
 	<!-- COLORS -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/f/css/custom.css')?>">
@@ -189,7 +190,7 @@
                                     </ul>
                                 </li><!-- end mega menu -->
                                 <li><a href="forums.html">Community</a></li>
-                                <li><a class="<?=ractivemutli($s,['blogs'])?>" href="<?=base_url('p/blogs')?>">Blog</a></li>
+                                <li><a class="<?=ractivemutli($s,['blogs','blog'])?>" href="<?=base_url('p/blogs')?>">Blog</a></li>
                                 <li><a class="<?=ractivemutli($s,['contact'])?>" href="<?=base_url('p/contact')?>">Contact</a></li>
                             </ul><!-- end nav navbar-nav -->
                             <ul class="nav navbar-nav navbar-right">
