@@ -18,6 +18,7 @@
             $this->db->from('blog_comments');
             $this->db->order_by('id','desc');
             $this->db->where('blog_id',$id);
+            $this->db->where('is_active',1);
             $query = $this->db->get();
             return $query->result_array();
         }

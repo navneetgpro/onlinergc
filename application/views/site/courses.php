@@ -17,11 +17,9 @@
     </div><!-- end container -->
 </section><!-- end section -->
 <?php function series($c=2){
-    $v=[];
-    foreach (range(0,$c) as $n) {
+    $v=[]; foreach (range(0,$c) as $n) {
         $v[] = 4*$n+1;
-    }
-    return $v;
+    } return $v;
 } ?>
 <section class="white section">
     <div class="container">
@@ -37,14 +35,14 @@
                     </div>
                     <div class="shop-item-title clearfix">
                         <h4><a href="<?=base_url('p/course/1')?>">Learn Web Design & Development</a></h4>
+                        <?php $rate = mt_rand(1,5); ?>
                         <div class="shopmeta">
-                            <span class="pull-left">12 Student</span>
+                            <span class="pull-left"><strong>Rs 599</strong> <del>Rs 1299</del></span>
                             <div class="rating pull-right">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                            <?php foreach (range(1,5) as $row) {
+                                $o=$row>$rate?'-o':null;
+                                echo '<i class="fa fa-star'.$o.'"></i>';
+                            } ?>
                             </div><!-- end rating -->
                         </div><!-- end shop-meta -->
                     </div><!-- end shop-item-title -->
