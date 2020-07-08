@@ -69,9 +69,9 @@
 									</div>
 								</div>
 							</div>
-							<button class="ajaxform login-btn" data-control="auth/login" data-msg="out" data-form="formid" type="submit">Sign In</button>
+							<button class="ajaxform login-btn" data-control="auth/login" data-form="formid" type="submit">Sign In</button>
 						</form>
-						<p class="sgntrm145">Or <a href="forgot_password.html">Forgot Password</a>.</p>
+						<p class="sgntrm145">Or <a href="#">Forgot Password</a>.</p>
 						<p class="mb-0 mt-30 hvsng145">Don't have an account? <a href="<?=base_url('d/signup')?>">Sign Up</a></p>
 					</div>
 					<div class="sign_footer"><img src="<?=base_url('assets/images/sign_logo.png')?>" alt="">© <?=YearCopyright('2020')?> <strong>Online RGC</strong>. All Rights Reserved.</div>

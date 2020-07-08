@@ -1,11 +1,7 @@
 .DS_Store
 
 application/cache/*
-<<<<<<< HEAD
-assets/js/*
-=======
-assets/js/app.js
->>>>>>> development
+!assets/js/app.js
 !application/cache/index.html
 !application/cache/.htaccess
 
@@ -31,8 +27,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 onlinergc.zip

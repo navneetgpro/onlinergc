@@ -1,4 +1,5 @@
-const baseurl = window.location.origin;
+// const baseurl = window.location.origin;
+const baseurl = 'http://localhost/onlinergc';
 // Make Sure SW are supporated
 /*  if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

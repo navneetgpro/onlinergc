@@ -53,7 +53,7 @@
 							</div>
 							<div class="ui search focus snupf mt-15">
 								<div class="ui left icon input swdh11 swdh19">
-									<input class="prompt srch_explore" type="email" name="email" value="" id="id_email" required="" maxlength="64" placeholder="Email Address">															
+									<input class="prompt srch_explore" type="tel" name="phone" value="" id="id_phone" required="" maxlength="64" placeholder="Enter Contact No">															
 								</div>
 							</div>
 							<div class="ui search focus snupf mt-15">
@@ -67,9 +67,9 @@
 								</div>
 							</div>
 							<button class="snupf login-btn nxtbtn" type="button">Next</button>
-							<button style="display:none" class="otptab login-btn nxtbtn" type="button">Submit</button>
+							<button style="display:none" class="otptab login-btn ajaxform" type="button" data-control="auth/register" data-form="formid">Submit</button>
 						</form>
-						<p class="sgntrm145">By signing up, you agree to our <a href="terms_of_use.html">Terms of Use</a> and <a href="terms_of_use.html">Privacy Policy</a>.</p>
+						<p class="sgntrm145">By signing up, you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
 						<p class="mb-0 mt-30">Already have an account? <a href="<?=base_url('d/signin')?>">Log In</a></p>
 					</div>
 					<div class="sign_footer"><img src="<?=base_url('assets/images/sign_logo.png')?>" alt="">© <?=YearCopyright('2020')?> <strong>Online RGC</strong>. All Rights Reserved.</div>
@@ -91,7 +91,7 @@
             var form_data = $('#formid').serialize();
             $.ajax({
                 type: 'post',
-                url: baseurl + "/d/signupotp",
+                url: baseurl + "/auth/signupotp",
                 data: form_data,
                 dataType: 'json',
                 beforeSend: function () {

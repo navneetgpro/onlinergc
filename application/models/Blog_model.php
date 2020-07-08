@@ -30,7 +30,7 @@
             return $query->result_array();
         }
         public function subcategories(){
-            $this->db->select('s.id,c.category_name,s.subcat_name');
+            $this->db->select('s.id,c.category_name,s.subcat_name,s.banner_img');
             $this->db->from('blog_subcat as s');
             $this->db->join('blog_cat as c','s.cat_id=c.id');
             $this->db->order_by('id','desc');

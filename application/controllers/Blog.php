@@ -155,42 +155,19 @@
         }
 
         public function blogs($offset=0){
-            $device = $this->input->post('device')=="android"?'api':'web';
             $config['base_url'] = base_url('blog/blogs/');
             $config['uri_segment'] = 3;
             $config['per_page'] = 1;
             $config['total_rows'] = $this->blog->countblogs();
-            
-            /* Bootstrap Pagination setting start */
-            $config['full_tag_open'] = "<ul class='pagination'>";
-            $config['full_tag_close'] ="</ul>";
-            $config['num_tag_open'] = '<li>';
-            $config['num_tag_close'] = '</li>';
-            $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
-            $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
-            $config['next_tag_open'] = "<li>";
-            $config['next_tagl_close'] = "</li>";
-            $config['prev_tag_open'] = "<li>";
-            $config['prev_tagl_close'] = "</li>";
-            $config['first_tag_open'] = "<li>";
-            $config['first_tagl_close'] = "</li>";
-            $config['last_tag_open'] = "<li>";
-            $config['last_tagl_close'] = "</li>";
-            /* Bootstrap Pagination setting end */ 
     
             // Init Pagination
             $this->pagination->initialize($config);
     
             $data['listblogs'] = $this->blog->listblogs($config['per_page'],$offset);
-            if($device=="api"){
+            
             // header change to json
 			header('Content-Type: application/json');
-			echo json_encode(array('status'=>'ok','data'=>$data['listblogs']));
-            }else{
-                $this->load->view('dash_temp/header');
-                $this->load->view('blogs/bloglist',$data);
-                $this->load->view('dash_temp/footer');
-            }
+			echo json_encode(array('status'=>'ok','total'=>$config['total_rows'],'data'=>$data['listblogs']));
         }
 
         /* public function catlistjson(){

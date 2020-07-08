@@ -7,6 +7,76 @@
 			$this->load->model('Site_model', 'dbcon');
 			$this->load->model('Common_model','common');
 		}
+		public function register(){
+			$this->form_validation->set_rules('fullname', 'Name', 'required|max_length[80]');
+            $this->form_validation->set_rules('phone', 'Contact', 'required|min_length[10]|max_length[10]');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+            $this->form_validation->set_rules('chkotp', 'OTP', 'required|min_length[6]|max_length[6]');
+			if($this->form_validation->run() === FALSE){
+                $err = validation_errors();
+                // header change to json
+                header('Content-Type: application/json');
+                echo json_encode(array('status'=>'error','data'=>$err));
+			}else{
+				$data = array(
+					'fullname'=>$this->input->post('fullname'),
+					'phone'=>$this->input->post('phone'),
+					'password'=>$this->input->post('password')
+				);
+				$iotp = $this->input->post('chkotp');
+				$gotp = $this->input->cookie('_hvbb', TRUE);
+				$botp = base64_decode($gotp);
+				if($iotp==$botp){
+					$cookie = array(
+						'name' => '_hvbb',
+						'value' => null,
+						'expire' => -300,
+						'path' => '/',
+					);
+					$this->input->set_cookie($cookie);
+					 // header change to json
+					header('Content-Type: application/json');
+					echo json_encode(array('status'=>'ok','data'=>"Register success..."));
+				}else{
+					// header change to json
+                    header('Content-Type: application/json');
+                    echo json_encode(array('status'=>'error','data'=>"Invalid OTP,Please try again!"));
+				}
+			}
+		}
+		public function signupotp(){
+			$this->form_validation->set_rules('fullname', 'Name', 'required|max_length[80]');
+            $this->form_validation->set_rules('phone', 'Contact', 'required|min_length[10]|max_length[10]');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+			if($this->form_validation->run() === FALSE){
+                $err = validation_errors();
+                // header change to json
+                header('Content-Type: application/json');
+                echo json_encode(array('status'=>'error','data'=>$err));
+			}else{
+				$otp = $this->generateNumericOTP();
+				$smsmsg = "Your login OTP ".$otp;
+				$botp = base64_encode($otp);
+				$cookie = array(
+					'name' => '_hvbb',
+					'value' => $botp,
+					'expire' => 300,
+					'path' => '/',
+				);
+				$this->input->set_cookie($cookie);
+				// header change to json
+				header('Content-Type: application/json');
+				echo json_encode(array('status'=>'ok','data'=>"OTP Sent to your phone...".$smsmsg));
+			}
+		}
+		function generateNumericOTP($n=6) {
+			$generator = "1357902468"; 
+			$result = "";
+			for ($i = 1; $i <= $n; $i++) { 
+				$result .= substr($generator, (mt_rand()%(strlen($generator))), 1); 
+			}
+			return $result; 
+		}
 		public function login(){
 			//defult variables defied
 			$er=0; $outmsg=null;
