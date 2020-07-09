@@ -23,14 +23,16 @@
             return $query->result_array();
         }
         public function categories(){
-            $this->db->select('*');
+            $url = base_url('assets/images/blog/');
+            $this->db->select("id,category_name, CONCAT('$url', banner_img) AS banner_img");
             $this->db->from('blog_cat');
             $this->db->order_by('id','desc');
             $query = $this->db->get();
             return $query->result_array();
         }
         public function subcategories(){
-            $this->db->select('s.id,c.category_name,s.subcat_name,s.banner_img');
+            $url = base_url('assets/images/blog/');
+            $this->db->select("s.id,c.category_name,s.subcat_name,, CONCAT('$url', s.banner_img) AS banner_img");
             $this->db->from('blog_subcat as s');
             $this->db->join('blog_cat as c','s.cat_id=c.id');
             $this->db->order_by('id','desc');
