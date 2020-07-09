@@ -13,7 +13,7 @@
                 <div class="col-md-12 mb-4">
                     <form id="formid">
                         <h3>Add New Video</h3>
-                        <input type="hidden" value=<?=$id?>>
+                        <input type="hidden" name="course_id" value=<?=$id?>>
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="group-form">

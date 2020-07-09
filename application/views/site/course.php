@@ -2,21 +2,20 @@
     <div class="container">
         <div class="row">  
             <div class="col-md-6 text-left">
-                <h1>Single Course Page</h1>
+                <h1>Course Details</h1>
             </div><!-- end col -->
             <div class="col-md-6 text-right">
                 <div class="bread">
                     <ol class="breadcrumb">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Courses</a></li>
-                        <li class="active">Single Course Page</li>
+                        <li class="active">Course Details</li>
                     </ol>
                 </div><!-- end bread -->
             </div><!-- end col -->
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end section -->
-
 
 <section class="white section">
     <div class="container">
@@ -26,27 +25,24 @@
                     <img src="upload/course_01.png" alt="" class="img-responsive">
                 </div><!-- end image widget -->
                 <div class="course-meta">
-                    <p class="course-category">Category : <a href="course-list.html">Graphic Design</a></p>
+                    <p class="course-category">Category : <a href="#"><?=$course['subcategory_name']?></a></p>
                     <hr>
                     <div class="rating">
                         <p>Reviews : &nbsp;
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                        <a title="" href="#reviews">&nbsp; (3)</a></p>
+                        <?php foreach (range(1,5) as $row) {
+                            $o=$row>$course['star_rate']?'-o':null;
+                            echo '<i class="fa fa-star'.$o.'"></i>';
+                        } ?>
+                        <a title="" href="#reviews">&nbsp; (<?=$course['star_rate']?>)</a></p>
                     </div><!-- end rating -->
                     <hr>
-                    <p class="course-student">Students : 21 Members </p>
+                    <p class="course-student">Students : <?=$course['students']?> Members </p>
                     <hr>
-                    <p class="course-time">Perriod : 12 Month </p>
+                    <p class="course-prize">Prize : Rs <?=$course['sale_price']?> <del>Rs <?=$course['actual_price']?></del></p>
                     <hr>
-                    <p class="course-prize">Prize : <i class="fa fa-trophy"></i> <i class="fa fa-certificate"></i> <i class="fa fa-shield"></i></p>
+                    <p class="course-instructors">Instructor : <a href="#" title=""><img src="<?=base_url('assets/f/upload/student_01.png')?>" class="img-circle" alt=""> Admin</a></p>
                     <hr>
-                    <p class="course-instructors">Instructor : <a href="#" title=""><img src="upload/student_01.png" class="img-circle" alt=""> John DOE</a></p>
-                    <hr>
-                    <p class="course-forum">Course Forum : <a href="#" title="">Web Designers</a></p>
+                    <p class="course-forum">Course Forum : <a href="#" title=""><?=$course['category_name']?></a></p>
                 </div><!-- end meta -->
                 <div class="course-button">
                     <a href="#" class="btn btn-primary btn-block">TAKE THIS COURSE</a>
@@ -55,12 +51,10 @@
 
             <div id="course-content" class="col-md-8">
                 <div class="course-description">
-                    <small>Course Status: <span>In Progress</span> </small>
-                    <small>Course Price: <span>$21.00</span> </small>
-                    <h3 class="course-title">Learning Quality Graphic Design & Mockup and Business Card</h3>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
-
-                    <p>It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+                    <small>Students: <span><?=$course['students']?> Members</span> </small>
+                    <small>Course Price: <span>Rs <?=$course['sale_price']?> <del>Rs <?=$course['actual_price']?></span> </small>
+                    <h3 class="course-title"><?=$course['course_title']?></h3>
+                    <p><?=$course['description']?></p>
                 </div><!-- end desc -->
 
                 <div class="course-table">
@@ -124,11 +118,12 @@
                 <hr class="invis">
 
                 <div id="reviews" class="feedbacks">
-                    <p>
+                    <!-- <p>
                         <a class="btn btn-default btn-block" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         What our customers said? (3 Feedbacks)
                         </a>
-                    </p>
+                    </p> -->
+                    <?php if(1==2){ ?>
                     <div class="collapse" id="collapseExample">
                         <div class="well">
                             <div class="media">
@@ -189,6 +184,7 @@
                             </div><!-- end media -->
                         </div><!-- end well -->
                     </div><!-- end collapse -->
+                    <?php } ?>
                 </div><!-- end reviews -->
                 <div class="other-courses">
                     <img src="images/others.png" alt="" class="">
@@ -197,7 +193,7 @@
         </div><!-- end row -->
 
         <hr class="invis">
-
+        <?php if(1==2){ ?>
         <div id="owl-featured" class="owl-custom">
             <div class="owl-featured">
                 <div class="shop-item-list entry">
@@ -307,5 +303,6 @@
                 </div><!-- end relative -->
             </div><!-- end col -->
         </div><!-- end owl-featured -->
+        <?php } ?>
     </div><!-- end container -->
 </section><!-- end section -->

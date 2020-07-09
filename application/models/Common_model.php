@@ -4,11 +4,6 @@
 		public function __construct(){
 			$this->load->database();
 		}
-        public function is_login(){
-			if(!$this->session->userdata('logged_in')){
-				redirect(base_url('site/signin'), 'refresh');
-			}
-		}
 		public function countu($id){
 			$this->db->select('id');
 			$this->db->from('newuser');

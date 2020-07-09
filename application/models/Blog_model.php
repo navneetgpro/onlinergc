@@ -79,7 +79,7 @@
         public function countblogs(){
             $this->db->from('blogs');
             return $this->db->count_all_results();
-       }
+        }
 
       /*  public function getblogcat(){
             $this->db->select('*');

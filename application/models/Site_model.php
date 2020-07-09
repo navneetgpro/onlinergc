@@ -4,8 +4,12 @@
 		public function __construct(){
 			$this->load->database();
 		}
+		public function registerstudent($data,$profile){
+			$this->db->insert('student_details',$profile);
+			return $this->db->insert('users',$data);
+		}
 		public function loginMe($username,$password){
-            $this->db->select('id,password,user_type');
+            $this->db->select('userid,user_name,password,user_type');
 			$this->db->from('users');
 			$this->db->where('username',$username);
 			$this->db->where('acc_status','active');

@@ -6,6 +6,7 @@
 			parent::__construct();
 			$this->load->model('Course_model', 'course');
 		}
+		
 		public function index(){
 		    die('access denied');
         }
@@ -81,6 +82,7 @@
 			}
         }
 		public function addnew_video(){
+			$this->form_validation->set_rules('course_id', 'something', 'required');
 			$this->form_validation->set_rules('video_url', 'url', 'required|max_length[100]');
 			if($this->form_validation->run() === FALSE){
                 $err = $this->form_validation->error_array();
