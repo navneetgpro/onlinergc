@@ -143,9 +143,9 @@
 								<img src="<?=base_url('assets/images/left-imgs/img-1.jpg')?>" alt="">
 								<div class="pd_content">
 									<div class="rhte85">
-										<h6>John Doe</h6>
+										<h6><?php echo $this->session->userdata('username'); ?></h6>
 									</div>
-									<span>Johndoe@gmail.com</span>
+									<span><?php echo $this->session->userdata('utype'); ?></span>
 								</div>
 							</div>
 							<a href="my_student_profile_view.html" class="dp_link_12">View Student Profile</a>
@@ -185,7 +185,7 @@
 			<div class="left_section">
 				<ul>
 					<li class="menu--item">
-						<a href="<?=base_url()?>" class="menu--link<?=ractive($curl,$baseu)?>" title="Dashboard">
+						<a href="<?=base_url('d')?>" class="menu--link<?=ractive($s,'')?>" title="Dashboard">
 							<i class="uil uil-apps menu--icon"></i>
 							<span class="menu--label">Dashboard</span>
 						</a>
@@ -213,7 +213,7 @@
 							<span class="menu--label">Course</span>
 						</a>
 					</li>
-					<li class="menu--item  menu--item__has_sub_menu <?=ractivemutli($s,['newblog','addsubcategory','addcategory'])?>">
+					<li class="menu--item  menu--item__has_sub_menu <?=ractivemutli($s,['addsubcategory','addcategory'])?>">
 						<label class="menu--link" title="Course Master">
 						  <i class='uil uil-book-alt menu--icon'></i>
 						  <span class="menu--label">Course Master</span>

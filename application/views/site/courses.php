@@ -2,14 +2,14 @@
     <div class="container">
         <div class="row">  
             <div class="col-md-6 text-left">
-                <h1>Course List Page</h1>
+                <h1>All Courses</h1>
             </div><!-- end col -->
             <div class="col-md-6 text-right">
                 <div class="bread">
                     <ol class="breadcrumb">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Courses</a></li>
-                        <li class="active">Course List Page</li>
+                        <li class="active">All Courses</li>
                     </ol>
                 </div><!-- end bread -->
             </div><!-- end col -->
@@ -24,57 +24,48 @@
 <section class="white section">
     <div class="container">
         <div class="row course-list">
-            <?php $c=0; $g=series(4);
-            foreach (range(1,5) as $key => $value) { $c++; ?>
+            <?php $c=0; $g=series(count($coursesarr));
+            foreach ($coursesarr as $course) { $c++; ?>
             <div class="col-md-3 col-sm-6 col-xs-12<?=in_array($c,$g)?" first":null?>">
                 <div class="shop-item-list entry">
                     <div class="">
-                        <img src="<?=base_url('assets/f/upload/course_01.png')?>" alt="">
+                        <img src="<?=base_url('assets/images/courses/'.$course['banner_img'])?>" alt="">
                         <div class="magnifier">
                         </div>
                     </div>
                     <div class="shop-item-title clearfix">
-                        <h4><a href="<?=base_url('p/course/1')?>">Learn Web Design & Development</a></h4>
-                        <?php $rate = mt_rand(1,5); ?>
+                        <h4><a href="<?=base_url('p/course/'.$course['id'])?>"><?=$course['course_title']?></a></h4>
                         <div class="shopmeta">
-                            <span class="pull-left"><strong>Rs 599</strong> <del>Rs 1299</del></span>
+                            <span class="pull-left"><strong>Rs <?=$course['sale_price']?></strong> <del>Rs <?=$course['actual_price']?></del></span>
                             <div class="rating pull-right">
                             <?php foreach (range(1,5) as $row) {
-                                $o=$row>$rate?'-o':null;
+                                $o=$row>$course['star_rate']?'-o':null;
                                 echo '<i class="fa fa-star'.$o.'"></i>';
                             } ?>
                             </div><!-- end rating -->
                         </div><!-- end shop-meta -->
                     </div><!-- end shop-item-title -->
                     <div class="visible-buttons">
-                        <a title="Add to Cart" href="#"><span class="fa fa-cart-arrow-down"></span></a>
-                        <a title="Read More" href="<?=base_url('p/course/1')?>"><span class="fa fa-search"></span></a>
+                        <a title="Buy Course" href="#"><span class="fa fa-cart-arrow-down"></span></a>
+                        <a title="Read More" href="<?=base_url('p/course/'.$course['id'])?>"><span class="fa fa-search"></span></a>
                     </div><!-- end buttons -->
                 </div><!-- end relative -->
             </div><!-- end col -->
+            <?php } if(count($coursesarr)==0){ ?>
+            <div class="col-lg-12">
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <div class="text-center"><h2>No Course Found..</h2></div>
+                    </div>
+                </div>
+            </div>
             <?php } ?>
         </div><!-- end row -->
 
         <div class="row">
             <div class="col-md-12">
                 <nav class="text-center">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
+                <?php if($c>0){ echo $this->pagination->create_links(); } ?>
                 </nav>
             </div><!-- end col -->
         </div><!-- end row -->

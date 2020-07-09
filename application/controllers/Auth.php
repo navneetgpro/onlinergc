@@ -9,7 +9,8 @@
 		}
 		public function register(){
 			$this->form_validation->set_rules('fullname', 'Name', 'required|max_length[80]');
-            $this->form_validation->set_rules('phone', 'Contact', 'required|min_length[10]|max_length[10]');
+			$this->form_validation->set_rules('phone', 'Contact', 'required|min_length[10]|max_length[10]');
+			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[100]');
             $this->form_validation->set_rules('password', 'Password', 'required');
             $this->form_validation->set_rules('chkotp', 'OTP', 'required|min_length[6]|max_length[6]');
 			if($this->form_validation->run() === FALSE){
@@ -18,15 +19,36 @@
                 header('Content-Type: application/json');
                 echo json_encode(array('status'=>'error','data'=>$err));
 			}else{
+				$username = CreateUserName($this->input->post('fullname'));
 				$data = array(
-					'fullname'=>$this->input->post('fullname'),
-					'phone'=>$this->input->post('phone'),
-					'password'=>$this->input->post('password')
+					'userid'=>$username,
+					'user_name'=>$this->input->post('fullname'),
+					'username'=>$this->input->post('email'),
+					'password'=>PassEncrypt($this->input->post('password')),
+					'user_type'=>'student',
+					'timestamp'=>date('Y-m-d H:i:s')
+				);
+				$profile = array(
+					'userid'=>$username,
+					'full_name'=>$this->input->post('fullname'),
+					'email'=>$this->input->post('email'),
+					'contact'=>$this->input->post('phone')
 				);
 				$iotp = $this->input->post('chkotp');
 				$gotp = $this->input->cookie('_hvbb', TRUE);
 				$botp = base64_decode($gotp);
+				$baseu = base_url('d');
 				if($iotp==$botp){
+					if($this->dbcon->registerstudent($data,$profile)){
+						$sesnvar = array(
+							"logged_in" => true,
+							"utype" => 'student',
+							"username" => $profile['full_name'],
+							"userid" => $username
+						);
+						// user data in session
+						$this->session->set_userdata($sesnvar);
+					}
 					$cookie = array(
 						'name' => '_hvbb',
 						'value' => null,
@@ -34,9 +56,11 @@
 						'path' => '/',
 					);
 					$this->input->set_cookie($cookie);
+					$outmsg = "Register success...";
+					$outmsg .= "<script>setTimeout(function () { window.location.href = '{$baseu}'; }, 250)</script>";
 					 // header change to json
 					header('Content-Type: application/json');
-					echo json_encode(array('status'=>'ok','data'=>"Register success..."));
+					echo json_encode(array('status'=>'ok','data'=>$outmsg));
 				}else{
 					// header change to json
                     header('Content-Type: application/json');
@@ -47,6 +71,7 @@
 		public function signupotp(){
 			$this->form_validation->set_rules('fullname', 'Name', 'required|max_length[80]');
             $this->form_validation->set_rules('phone', 'Contact', 'required|min_length[10]|max_length[10]');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[100]');
             $this->form_validation->set_rules('password', 'Password', 'required');
 			if($this->form_validation->run() === FALSE){
                 $err = validation_errors();
@@ -80,7 +105,7 @@
 		public function login(){
 			//defult variables defied
 			$er=0; $outmsg=null;
-			$baseu = base_url();
+			$baseu = base_url('d');
 			$this->form_validation->set_rules('username', 'Username', 'required');
 			$this->form_validation->set_rules('password', 'Password', 'required');
 			if($this->form_validation->run() === FALSE){
@@ -99,7 +124,8 @@
 					$sesnvar = array(
 						"logged_in" => true,
 						"utype" => $result[0]->user_type,
-						"userid" => $result[0]->id
+						"username" => $result[0]->user_name,
+						"userid" => $result[0]->userid
 					);
 					// user data in session
 					$this->session->set_userdata($sesnvar);
@@ -118,6 +144,7 @@
 			$newdata = array(
 				'utype'  =>'',
 				'userid' => '',
+				'username' => '',
 				'logged_in' => FALSE,
 				);
 			$this->session->unset_userdata($newdata);

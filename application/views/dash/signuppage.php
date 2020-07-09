@@ -53,7 +53,12 @@
 							</div>
 							<div class="ui search focus snupf mt-15">
 								<div class="ui left icon input swdh11 swdh19">
-									<input class="prompt srch_explore" type="tel" name="phone" value="" id="id_phone" required="" maxlength="64" placeholder="Enter Contact No">															
+									<input class="prompt srch_explore" type="tel" name="phone" value="" id="id_phone" required="" maxlength="10" placeholder="Enter Contact No">															
+								</div>
+							</div>
+							<div class="ui search focus snupf mt-15">
+								<div class="ui left icon input swdh11 swdh19">
+									<input class="prompt srch_explore" type="email" name="email" value="" id="id_email" required="" maxlength="100" placeholder="Enter Email">															
 								</div>
 							</div>
 							<div class="ui search focus snupf mt-15">
